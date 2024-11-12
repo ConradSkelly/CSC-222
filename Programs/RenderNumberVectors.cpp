@@ -14,3 +14,21 @@ string render_num_vector(const vector<int>& numbers) {
 
   return output;
 }
+
+int num_vector_sum(const vector<int>& numbers) {
+    int sum = 0;
+
+    for (int element : numbers)
+        sum += element;
+
+    return sum;
+}
+
+int num_vector_product(const vector<int>& numbers) {
+    int product = 1;
+
+    for (int element : numbers)
+        product *= element;
+
+    return product;
+}
