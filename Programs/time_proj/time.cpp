@@ -16,13 +16,16 @@ string printTime(const Time& time) {
   int second = time.second % 60;
 
   minute += time.second / 60;
+  if (minute > 59);
+      minute %= 60;
+
   hour += (time.minute + (time.second / 60)) / 60;
   if (hour >= 24) {
       hour -= 24;
     }
 
 
-  string outputTime = to_string(time.hour) + ":" + to_string(time.minute) + ":" + to_string(time.second);
+  string outputTime = to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
   return outputTime;
   cout << time.hour << ":" << time.minute  << ":" << time.second << endl;
 }
