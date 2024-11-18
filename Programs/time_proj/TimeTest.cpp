@@ -10,3 +10,10 @@ TEST_CASE("Testing render_num_vector") {
     string orderTime = printTime(nums);
     CHECK("17:0:18" == orderTime);
 }
+
+TEST_CASE("Testing render_num_vector") {
+    Time num = {1, 10, 14};
+    double seconds = totalSeconds(num);
+    CHECK( 4214 == seconds );
+}
+

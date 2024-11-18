@@ -12,6 +12,8 @@ struct Time {
 
 string printTime(const  Time& time);
 
+double totalSeconds(const Time& time);
+
 
 
 #endif

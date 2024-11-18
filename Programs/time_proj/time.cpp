@@ -5,11 +5,6 @@
 
 using namespace std;
 
-// struct Time {
-//    int hour, minute;
-//    double second;
-// };
-
 string printTime(const Time& time) {
   int hour = time.hour % 24;
   int minute = time.minute % 60;
@@ -28,4 +23,8 @@ string printTime(const Time& time) {
   string outputTime = to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
   return outputTime;
   cout << time.hour << ":" << time.minute  << ":" << time.second << endl;
+}
+
+double totalSeconds(const Time& time) {
+  return time.second + (time.hour * 3600 + time.minute * 60);
 }
