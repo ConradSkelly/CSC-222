@@ -6,7 +6,7 @@
 #include "time.h"
 
 TEST_CASE("Testing render_num_vector") {
-    Time nums = {1, 3, 7};
+    Time nums = {15, 119, 78};
     string orderTime = printTime(nums);
-    CHECK("1:3:7");
+    CHECK("17:0:18" == orderTime);
 }
