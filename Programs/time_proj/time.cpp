@@ -5,6 +5,26 @@
 
 using namespace std;
 
+Time::Time(int hour, int minute, int second){
+  this->hour = hour;
+  this->minute = minute;
+  this->second = second;
+}
+Time::Time(int second){
+  this->second = second;
+}
+
+string Time::secondToTime(){
+
+  hour = second/3600;
+  second = second%3600;
+  minute = second/60;
+  second = second%60;
+
+  string timeString = to_string(hour)+":"+to_string(minute)+":"+to_string(second);
+  return timeString;
+}
+
 string Time::print() {
   minute += second / 60; second %= 60;
   hour += minute / 60; minute %= 60;

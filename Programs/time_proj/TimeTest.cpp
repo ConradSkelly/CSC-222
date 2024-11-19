@@ -6,7 +6,7 @@
 #include "time.h"
 
 TEST_CASE("Testing render_num_vector") {
-    Time nums = {15, 119, 78};
+    Time nums = {15,119,78};
     CHECK("17:0:18" == nums.print());
 }
 
@@ -18,9 +18,14 @@ TEST_CASE("testing changing into seconds") {
 
 TEST_CASE("compateing time") {
     Time num = {1, 10, 14};
-    Time doneTime {10,15,45};
+    Time doneTime = {10,15,45};
     doneTime.after(num);
     CHECK(doneTime.after(num) == 1);
+}
+
+TEST_CASE("seconds to total time") {
+    Time num = {20000};
+    CHECK("5:33:20" == num.secondToTime());
 }
 
 
