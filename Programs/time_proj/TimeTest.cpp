@@ -16,7 +16,11 @@ TEST_CASE("testing changing into seconds") {
     CHECK( 4214 == seconds );
 }
 
-if (done_time.after(current_time)) {
-    cout << "The bread will be done after it starts." << endl;
+TEST_CASE("compateing time") {
+    Time num = {1, 10, 14};
+    Time doneTime {0,15,45};
+    doneTime.after(num);
+    CHECK(doneTime.after(num) == 1);
 }
+
 
