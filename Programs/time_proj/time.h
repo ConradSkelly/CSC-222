@@ -7,10 +7,11 @@ using namespace std;
 struct Time {
     int hour, minute;
     int second;
+
+    string print();
+    double to_seconds();
+    bool after(const Time &other);
 };
-
-
-string printTime(const  Time& time);
 
 double totalSeconds(const Time& time);
 

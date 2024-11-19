@@ -7,13 +7,16 @@
 
 TEST_CASE("Testing render_num_vector") {
     Time nums = {15, 119, 78};
-    string orderTime = printTime(nums);
-    CHECK("17:0:18" == orderTime);
+    CHECK("17:0:18" == nums.print());
 }
 
-TEST_CASE("Testing render_num_vector") {
+TEST_CASE("testing changing into seconds") {
     Time num = {1, 10, 14};
     double seconds = totalSeconds(num);
     CHECK( 4214 == seconds );
+}
+
+if (done_time.after(current_time)) {
+    cout << "The bread will be done after it starts." << endl;
 }
 

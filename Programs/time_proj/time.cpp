@@ -5,16 +5,16 @@
 
 using namespace std;
 
-string printTime(const Time& time) {
-  int hour = time.hour % 24;
-  int minute = time.minute % 60;
-  int second = time.second % 60;
+string Time::print() {
+  minute += second / 60; second %= 60;
+  hour += minute / 60; minute %= 60;
+  hour %= 24;
 
-  minute += time.second / 60;
+  minute += second / 60;
   if (minute > 59);
       minute %= 60;
 
-  hour += (time.minute + (time.second / 60)) / 60;
+  hour += (minute + (second / 60)) / 60;
   if (hour >= 24) {
       hour -= 24;
     }
@@ -22,9 +22,19 @@ string printTime(const Time& time) {
 
   string outputTime = to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
   return outputTime;
-  cout << time.hour << ":" << time.minute  << ":" << time.second << endl;
+  cout << hour << ":" << minute  << ":" << second << endl;
 }
 
 double totalSeconds(const Time& time) {
   return time.second + (time.hour * 3600 + time.minute * 60);
+}
+
+bool Time::after(const Time& t2) {
+  if (hour > t2.hour) return true;
+  if (hour < t2.hour) return false;
+
+  if (minute > t2.minute) return true;
+  if (minute < t2.minute) return false;
+
+  return (second > t2.second);
 }
