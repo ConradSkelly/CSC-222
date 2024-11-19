@@ -18,7 +18,7 @@ TEST_CASE("testing changing into seconds") {
 
 TEST_CASE("compateing time") {
     Time num = {1, 10, 14};
-    Time doneTime {0,15,45};
+    Time doneTime {10,15,45};
     doneTime.after(num);
     CHECK(doneTime.after(num) == 1);
 }
