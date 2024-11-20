@@ -13,6 +13,9 @@ Time::Time(int hour, int minute, int second){
 Time::Time(int second){
   this->second = second;
 }
+Time::Time(){
+  this->second = 0;
+}
 
 string Time::secondToTime(){
 

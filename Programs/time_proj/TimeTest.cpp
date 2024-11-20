@@ -28,4 +28,15 @@ TEST_CASE("seconds to total time") {
     CHECK("5:33:20" == num.secondToTime());
 }
 
+TEST_CASE("Test can create and render Times") {
+    Time t1;
+    CHECK(t1.secondToTime() == "0:00:00");
+    Time t2(7);
+    CHECK(t2.secondToTime() == "0:00:07");
+    Time t3(72);
+    CHECK(t3.secondToTime() == "0:01:12");
+    Time t4(7 * 3600 + 11 * 60 + 19);
+    CHECK(t4.secondToTime() == "7:11:19");
+}
+
 

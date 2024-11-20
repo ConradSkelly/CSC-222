@@ -17,6 +17,7 @@ struct Time {
 
     Time (int hour, int minute, int second);
     Time (int second);
+    Time ();
 };
 
 double totalSeconds(const Time& time);
