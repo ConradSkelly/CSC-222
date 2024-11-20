@@ -2,6 +2,7 @@
 #include <iostream>
 #include "time.h"
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -18,13 +19,19 @@ Time::Time(){
 }
 
 string Time::secondToTime(){
-
+  string minuteSeperater = ":";
+  string secondSeperater = ":";
+  string timeString = "";
   hour = second/3600;
   second = second%3600;
   minute = second/60;
   second = second%60;
 
-  string timeString = to_string(hour)+":"+to_string(minute)+":"+to_string(second);
+  if (log10(minute) < 1)
+    minuteSeperater = ":0";
+  if (log10(second) < 1)
+	secondSeperater = ":0";
+  timeString = to_string(hour)+minuteSeperater+to_string(minute)+secondSeperater+to_string(second);
   return timeString;
 }
 
