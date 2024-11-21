@@ -39,4 +39,11 @@ TEST_CASE("Test can create and render Times") {
     CHECK(t4.secondToTime() == "7:11:19");
 }
 
+TEST_CASE("Test hour-minute and hour-minute-second constructors") {
+    Time t1(5, 37);
+    CHECK(t1.toString() == "5:37:00");
+    Time t2(7, 2, 11);
+    CHECK(t2.toString() == "7:02:11");
+}
+
 

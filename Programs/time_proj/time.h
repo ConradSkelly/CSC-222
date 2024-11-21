@@ -10,6 +10,7 @@ struct Time {
 
     string print();
     string secondToTime();
+    string toString();
 
     double to_seconds();
 
@@ -18,6 +19,7 @@ struct Time {
     Time (int hour, int minute, int second);
     Time (int second);
     Time ();
+    Time(int hour, int minute);
 };
 
 double totalSeconds(const Time& time);

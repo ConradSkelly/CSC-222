@@ -11,17 +11,34 @@ Time::Time(int hour, int minute, int second){
   this->minute = minute;
   this->second = second;
 }
+
 Time::Time(int second){
   this->second = second;
 }
+
 Time::Time(){
   this->second = 0;
+}
+
+Time::Time(int hour, int minute){
+  this->hour = hour;
+  this->minute = minute;
+}
+
+string Time::toString(){
+
+  string minuteSeperater = ":";
+  string secondSeperater = ":";
+  if (log10(minute) < 1)
+    minuteSeperater = ":0";
+  if (log10(second) < 1)
+	secondSeperater = ":0";
+  return minuteSeperater;
 }
 
 string Time::secondToTime(){
   string minuteSeperater = ":";
   string secondSeperater = ":";
-  string timeString = "";
   hour = second/3600;
   second = second%3600;
   minute = second/60;
@@ -31,7 +48,7 @@ string Time::secondToTime(){
     minuteSeperater = ":0";
   if (log10(second) < 1)
 	secondSeperater = ":0";
-  timeString = to_string(hour)+minuteSeperater+to_string(minute)+secondSeperater+to_string(second);
+  string timeString = to_string(hour)+minuteSeperater+to_string(minute)+secondSeperater+to_string(second);
   return timeString;
 }
 
@@ -68,3 +85,5 @@ bool Time::after(const Time& t2) {
 
   return (second > t2.second);
 }
+
+
