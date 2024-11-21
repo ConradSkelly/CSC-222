@@ -23,6 +23,7 @@ Time::Time(){
 Time::Time(int hour, int minute){
   this->hour = hour;
   this->minute = minute;
+  this->second = 0;
 }
 
 string Time::toString(){
@@ -33,7 +34,8 @@ string Time::toString(){
     minuteSeperater = ":0";
   if (log10(second) < 1)
 	secondSeperater = ":0";
-  return minuteSeperater;
+  string finalTime = to_string(hour)+minuteSeperater+to_string(minute)+secondSeperater+to_string(second);
+  return finalTime;
 }
 
 string Time::secondToTime(){
