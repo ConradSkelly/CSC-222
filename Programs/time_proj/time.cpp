@@ -34,6 +34,14 @@ Time Time::operator+(Time other){
   return newTime;
 }
 
+ostream& operator<<(ostream& os, const Time& t) {
+    int h = t.second / 3600;
+    int m = (t.second % 3600) / 60;
+    int s = t.second % 60;
+    os << h << ':' << (m < 10 ? "0" : "") << m << ':' << (s < 10 ? "0" : "") << s;
+    return os;
+}
+
 string Time::toString(){
   string minuteSeperater = ":";
   string secondSeperater = ":";

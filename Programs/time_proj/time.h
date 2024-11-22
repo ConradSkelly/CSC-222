@@ -22,7 +22,12 @@ struct Time {
     Time (int second);
     Time ();
     Time(int hour, int minute);
+
+
 };
+
+ostream& operator<<(ostream& os, const Time& t);
+
 
 double totalSeconds(const Time& time);
 
