@@ -14,6 +14,8 @@ struct Time {
 
     double to_seconds();
 
+    Time operator+(Time);
+
     bool after(const Time &other);
 
     Time (int hour, int minute, int second);

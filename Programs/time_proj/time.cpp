@@ -23,11 +23,18 @@ Time::Time(){
 Time::Time(int hour, int minute){
   this->hour = hour;
   this->minute = minute;
-  this->second = 0;
+  second = 0;
+}
+
+Time Time::operator+(Time other){
+  this->hour = hour + other.hour;
+  this->minute = minute + other.minute;
+  this->second = second + other.second;
+  Time newTime ={hour, minute, second};
+  return newTime;
 }
 
 string Time::toString(){
-
   string minuteSeperater = ":";
   string secondSeperater = ":";
   if (log10(minute) < 1)
