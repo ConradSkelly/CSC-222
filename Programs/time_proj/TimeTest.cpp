@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "time.h"
+#include "Point.h"
 
 TEST_CASE("Testing render_num_vector") {
     Time nums = {15,119,78};
@@ -52,8 +53,6 @@ TEST_CASE("Test can add two Times with + operator") {
     Time t3 = t1 + t2;
     CHECK(t3.toString() == "42:42:42");
 }
-
-#include "Point.h" // Include the Point header
 
 TEST_CASE("Test can create Points") {
     Point p1;
