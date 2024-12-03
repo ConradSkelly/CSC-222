@@ -6,6 +6,6 @@
 TEST_CASE("Testing functionality of [TempleteClass]") {
 TempleteClass<int> t1(1);
 CHECK(t1.getData() == 1);
-TempleteClass<int> t2(2.22222222);
+TempleteClass<double> t2(2.22222222);
 CHECK(t2.getData() == 2.22222222);
 }
