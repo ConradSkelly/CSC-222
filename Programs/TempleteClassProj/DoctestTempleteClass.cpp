@@ -2,12 +2,13 @@
 #include <stdio.h>
 #include <doctest.h>
 #include "TempleteClass.h"
+#include <vector>
 
 TEST_CASE("Testing functionality of [TempleteClass]") {
-TempleteClass t1(1);
-CHECK(t1.getData() == 1);
-TempleteClass t2(3.14);
-CHECK(t2.getData() == 3.14);
+    TempleteClass t1(1);
+    CHECK(t1.getData() == 1);
+    TempleteClass t2(3.14);
+    CHECK(t2.getData() == 3.14);
 }
 
 TEST_CASE("testing swap function") {
@@ -25,4 +26,9 @@ TEST_CASE("testing swap function") {
     auto swap3 = t5.getPair();
     CHECK(swap3.first == "Hello");
     CHECK(swap3.second == "world");
+}
+TEST_CASE("test bubble sort funtion") {
+    TempleteClass<std::vector<int>> t1({1,3,7,8});
+    CHECK(t1.getData() == std::vector<int>({1,3,7,8}));
+
 }
