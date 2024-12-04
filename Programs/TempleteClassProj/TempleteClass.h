@@ -22,6 +22,10 @@ public:
         return data;
     }
 
+    T getDataVector() {
+        return dataVector;
+    }
+
     std::pair<T, T> getPair() {
         T temp = data;
         data = data1;

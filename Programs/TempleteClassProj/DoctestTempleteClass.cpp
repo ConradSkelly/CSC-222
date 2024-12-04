@@ -28,7 +28,11 @@ TEST_CASE("testing swap function") {
     CHECK(swap3.second == "world");
 }
 TEST_CASE("test bubble sort funtion") {
-    TempleteClass<std::vector<int>> t1({1,7,12,20});
-    std::vector<int> expected = {1, 7, 12, 20};
+    TempleteClass<int> t1({1,7,2,20});
+    std::vector<int> expected = {1, 2, 7, 20};
     CHECK(t1.bubbleSort() == expected);
+
+    TempleteClass<std::string> t2({"apple","pear","bannana","orange"});
+    std::vector<std::string> strings {"apple","pear","bannana","orange"};
+    CHECK(t2.bubbleSort() == strings);
 }
