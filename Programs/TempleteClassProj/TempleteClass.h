@@ -2,6 +2,7 @@
 #define TEMPLETECLASS_H
 
 #include <vector>
+#include <algorithm>
 
 template <class T>
 class TempleteClass {
@@ -15,7 +16,7 @@ public:
 
     TempleteClass(T data, T data1) : data(data), data1(data1) {}
 
-    TempleteClass(std::vector<T> daTTa) : data(data) {}
+    explicit TempleteClass(std::vector<T> dataVector) : dataVector(dataVector) {}
 
     T getData() {
         return data;
@@ -29,6 +30,17 @@ public:
     }
 
     std::vector<T> bubbleSort() {
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < dataVector.size() - 1; i++) {
+                if (dataVector[i] > dataVector[i + 1]) {
+                    sorted = false;
+                    std::swap(dataVector[i], dataVector[i + 1]);
+                }
+            }
+        }
+        return dataVector;
 
     }
 };
