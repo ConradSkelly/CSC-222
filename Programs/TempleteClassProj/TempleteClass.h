@@ -2,7 +2,7 @@
 #define TEMPLETECLASS_H
 
 #include <vector>
-#include <algorithm>
+
 
 template <class T>
 class TempleteClass {

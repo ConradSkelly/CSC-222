@@ -32,7 +32,7 @@ TEST_CASE("test bubble sort funtion") {
     std::vector<int> expected = {1, 2, 7, 20};
     CHECK(t1.bubbleSort() == expected);
 
-    TempleteClass<std::string> t2({"apple","pear","bannana","orange"});
-    std::vector<std::string> strings {"apple","pear","bannana","orange"};
+    TempleteClass<std::string> t2({"apple","pear","banana","orange"});
+    std::vector<std::string> strings {"apple", "banana", "orange", "pear"};
     CHECK(t2.bubbleSort() == strings);
 }
