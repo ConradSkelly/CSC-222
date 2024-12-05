@@ -42,4 +42,8 @@ TEST_CASE("test merge sort funtion") {
     TempleteClass<int> t1{{1,7,2,20,10,8,2,5,6,8,9}};
     std::vector<int> expected{{1, 2, 2, 5, 6, 7, 8, 8, 9, 10, 20}};
     CHECK(t1.mergeSort() == expected);
+
+    TempleteClass<std::string> t2{{"cat","dog","aardvark","bat","eal"}};
+    std::vector<std::string> strings{"aardvark", "bat", "cat","dog", "eal"};
+    CHECK(t2.mergeSort() == strings);
 }
