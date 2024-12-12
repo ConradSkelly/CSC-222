@@ -68,3 +68,28 @@ TEST_CASE("Test gcd function") {
     CHECK(gcd(16, 12) == 4);
     CHECK(gcd(18, 27) == 9);
 }
+
+TEST_CASE("Test comparison operators") {
+    Fraction f1(1, 4);
+    Fraction f2(3, 4);
+    Fraction f3(2, 5);
+    Fraction f4(6, 8);
+    CHECK((f2 > f1) == true);
+    CHECK((f2 == f4) == true);
+    CHECK((f1 < f3) == true);
+    CHECK((f3 != f2) == true);
+    CHECK((f4 >= f1) == true);
+    CHECK((f4 <= f2) == true);
+}
+
+TEST_CASE("Test numerical operators"){
+    Fraction f1(1, 4);
+    Fraction f2(3, 4);
+    Fraction f3(1, 2);
+    Fraction f4(5, 5);
+    Fraction f5(3, 8);
+    CHECK((f2 + f1) == f4);
+    CHECK((f2 - f1) == f3);
+    CHECK((f2 * f3) == f5);
+    CHECK((f5 / f3) == f2);
+}

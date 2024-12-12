@@ -53,5 +53,46 @@ int gcd(int top, int bottom) {
         bottom = remainder;
     }
     return top;
+   }
+
+
+bool Fraction::operator>(const Fraction other) const {
+    return this->top * other.bottom > other.top * this->bottom;
+}
+
+bool Fraction::operator==(const Fraction other) const {
+    return this->top * other.bottom == other.top * this->bottom;
+}
+
+bool Fraction::operator<(const Fraction other) const {
+    return this->top * other.bottom < other.top * this->bottom;
+}
+
+bool Fraction::operator!=(const Fraction other) const {
+    return this->top * other.bottom != other.top * this->bottom;
+}
+
+bool Fraction::operator>=(const Fraction other) const {
+    return this->top * other.bottom >= other.top * this->bottom;
+}
+
+bool Fraction::operator<=(const Fraction other) const {
+    return this->top * other.bottom <= other.top * this->bottom;
+}
+
+Fraction Fraction::operator+(const Fraction other) const {
+    return Fraction((this->top * other.bottom) + (other.top * this->bottom), (this->bottom * other.bottom));
+}
+
+Fraction Fraction::operator-(const Fraction other) const {
+    return Fraction((this->top * other.bottom) - (other.top * this->bottom), (this->bottom * other.bottom));
+}
+
+Fraction Fraction::operator*(const Fraction other) const {
+    return Fraction((this->top * other.top), (this->bottom * other.bottom));
+}
+
+Fraction Fraction::operator/(const Fraction other) const {
+    return Fraction((this->top / other.top), (this->bottom / other.bottom));
 }
 
