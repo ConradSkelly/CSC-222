@@ -32,6 +32,13 @@ TEST_CASE("Test can render a Fraction as a string") {
     CHECK(f2.toString() == "-7/11");
 }
 
+TEST_CASE("Test Fractions are stored in lowest terms") {
+    Fraction f1{6, 8};
+    CHECK(f1.toString() == "3/4");
+    Fraction f2{8, 16};
+    CHECK(f2.toString() == "1/2");
+}
+
 TEST_CASE("Test gcd function") {
     CHECK(gcd(4, 14) == 2);
     CHECK(gcd(16, 12) == 4);

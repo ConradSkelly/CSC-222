@@ -10,8 +10,9 @@ Fraction::Fraction(){
 }
 
 Fraction::Fraction(int top, int bottom) {
-    this -> top = top;
-    this -> bottom = bottom;
+    int divisor = gcd(top, bottom);
+    this->top = top / divisor;
+    this->bottom = bottom / divisor;
 }
 
 Fraction::Fraction(string sFraction){
