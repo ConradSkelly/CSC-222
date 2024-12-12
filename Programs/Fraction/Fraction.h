@@ -17,3 +17,5 @@ struct Fraction {
     int numerator();
     int denominator();
 };
+
+int gcd(int, int);

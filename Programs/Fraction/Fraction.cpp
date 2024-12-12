@@ -26,13 +26,13 @@ Fraction Fraction::toNumber(){
     return Fraction(top, bottom);
 }
 
-int gcd(int numerator, int denominator) {
+int gcd(int top, int bottom) {
     int remainder = 0;
-    while (denominator != 0) {
-        remainder = numerator % denominator;
-        numerator = denominator;
-        denominator = remainder;
+    while (bottom != 0) {
+        remainder = top % bottom;
+        top = bottom;
+        bottom = remainder;
     }
-    return numerator;
+    return top;
 }
 

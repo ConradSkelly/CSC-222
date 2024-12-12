@@ -24,3 +24,9 @@ TEST_CASE("Test third Fraction constructor using a string") {
     CHECK(f2.top == 37);
     CHECK(f2.bottom == 149);
 }
+
+TEST_CASE("Test gcd function") {
+    CHECK(gcd(4, 14) == 2);
+    CHECK(gcd(16, 12) == 4);
+    CHECK(gcd(18, 27) == 9);
+}
