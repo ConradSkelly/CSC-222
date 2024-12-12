@@ -26,6 +26,10 @@ Fraction Fraction::toNumber(){
     return Fraction(top, bottom);
 }
 
+string Fraction::toString() {
+    return to_string(top) + "/" + to_string(bottom);
+}
+
 int gcd(int top, int bottom) {
     int remainder = 0;
     while (bottom != 0) {

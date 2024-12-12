@@ -14,8 +14,7 @@ struct Fraction {
 
     //function
     Fraction toNumber();
-    int numerator();
-    int denominator();
+    string toString();
 };
 
 int gcd(int, int);
