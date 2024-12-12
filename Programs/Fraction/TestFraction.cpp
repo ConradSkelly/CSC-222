@@ -55,6 +55,14 @@ TEST_CASE("Test can construct Fraction from integer") {
     CHECK(f2.bottom == 1);
 }
 
+TEST_CASE("Test string constructor with integers") {
+    Fraction f1("15");
+    CHECK(f1.top == 15);
+    CHECK(f1.bottom == 1);
+    Fraction f2("42");
+    CHECK(f2.top == 42);
+    CHECK(f2.bottom == 1);
+}
 TEST_CASE("Test gcd function") {
     CHECK(gcd(4, 14) == 2);
     CHECK(gcd(16, 12) == 4);

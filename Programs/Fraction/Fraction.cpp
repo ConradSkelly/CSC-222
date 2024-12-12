@@ -21,9 +21,16 @@ Fraction::Fraction(int top, int bottom) {
 }
 
 Fraction::Fraction(string sFraction){
+
+    if (sFraction.find("/") == -1)  {
+        top = stoi(sFraction);
+        bottom = 1;
+        }
+    else {
     this -> sFraction = sFraction;
     top = 0;
     bottom = 1;
+    }
 }
 
 Fraction Fraction::toNumber(){
