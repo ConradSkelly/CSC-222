@@ -11,6 +11,7 @@ struct Fraction {
     Fraction();
     Fraction(int top,int bottom);
     explicit Fraction (string sFraction);
+    Fraction(int top);
 
     //function
     Fraction toNumber();

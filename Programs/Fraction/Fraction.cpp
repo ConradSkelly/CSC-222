@@ -9,6 +9,11 @@ Fraction::Fraction(){
     this -> bottom = 1;
 }
 
+Fraction::Fraction(int top){
+  this -> top = top;
+  bottom = 1;
+}
+
 Fraction::Fraction(int top, int bottom) {
     int divisor = gcd(top, bottom);
     this->top = top / divisor;
@@ -28,6 +33,8 @@ Fraction Fraction::toNumber(){
 }
 
 string Fraction::toString() {
+    if (bottom == 1)
+        return to_string(top);
     return to_string(top) + "/" + to_string(bottom);
 }
 
