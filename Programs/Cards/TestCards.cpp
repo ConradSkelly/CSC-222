@@ -19,5 +19,17 @@ TEST_CASE("Test can create and render Cards") {
     CHECK(c4.toString() == "Seven of Spades");
 }
 
+TEST_CASE("Test for comparison of Cards") {
+    Cards::Card c1(Cards::Suit::Hearts, Cards::Rank::Queen);
+    Cards::Card c2(Cards::Suit::Hearts, Cards::Rank::Queen);
+    Cards::Card c3(Cards::Suit::Spades, Cards::Rank::Ace);
+    Cards::Card c4(Cards::Suit::Hearts, Cards::Rank::Five);
+    Cards::Card c5(Cards::Suit::Hearts, Cards::Rank::Four);
+    Cards::Card c6(Cards::Suit::Diamonds, Cards::Rank::Four);
+    CHECK((c1 == c2) == true);
+    CHECK((c1 == c3) == false);
+    CHECK((c1 > c5) == true);
+    CHECK((c1 <= c5) == false);
+}
 
 
