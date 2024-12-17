@@ -28,8 +28,10 @@ namespace Cards {
     public:
         Suit suit;
         Rank rank;
+        bool empty;
 
         Card(Suit suit, Rank rank);
+        Card();
 
         bool operator==(const Card& other) const;
         bool operator>(const Card& other) const;

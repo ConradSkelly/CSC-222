@@ -1,18 +1,23 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "Cards.h"
 #include <iostream>
+#include <string>
+#include <doctest.h>
 
-int main() {
-    auto deck = Cards::createDeck();
-    Cards::printDeck(deck);
 
-    Cards::Card searchCard(Cards::Suit::Hearts, Cards::Rank::Queen);
-    std::cout << "Card to search: " << searchCard.toString() << std::endl;
+TEST_CASE("Test can create and render Cards") {
+    Cards::Card c1{Cards::Suit::Diamonds, Cards::Rank::Jack};
+    CHECK(c1.toString() == "Jack of Diamonds");
 
-    int linearIndex = Cards::findCardInDeck(deck, searchCard);
-    std::cout << "Linear search index: " << linearIndex << std::endl;
+    Cards::Card c2;
+    CHECK(c2.toString() == "Joker");
 
-    int binaryIndex = Cards::binarySearchDeck(deck, searchCard);
-    std::cout << "Binary search index: " << binaryIndex << std::endl;
+    Cards::Card c3(Cards::Suit::Hearts, Cards::Rank::Queen);
+    CHECK(c3.toString() == "Queen of Hearts");
 
-    return 0;
+    Cards::Card c4(Cards::Suit::Spades, Cards::Rank::Seven);
+    CHECK(c4.toString() == "Seven of Spades");
 }
+
+
+

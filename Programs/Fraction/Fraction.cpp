@@ -3,7 +3,6 @@
 #include "Fraction.h"
 using namespace std;
 
-//constructors
 Fraction::Fraction(){
     this -> top = 0;
     this -> bottom = 1;
@@ -54,7 +53,6 @@ int gcd(int top, int bottom) {
     }
     return top;
    }
-
 
 bool Fraction::operator>(const Fraction other) const {
     return this->top * other.bottom > other.top * this->bottom;

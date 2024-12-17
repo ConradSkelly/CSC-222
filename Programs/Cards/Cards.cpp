@@ -3,7 +3,13 @@
 
 namespace Cards {
 
-    Card::Card(Suit suit, Rank rank) : suit(suit), rank(rank) {}
+	Card::Card() {
+      empty = true;
+	}
+
+    Card::Card(Suit suit, Rank rank) : suit(suit), rank(rank) {
+      empty = false;
+    }
 
     bool Card::operator==(const Card& other) const {
         return (suit == other.suit && rank == other.rank);
@@ -26,6 +32,9 @@ namespace Cards {
     }
 
     std::string Card::toString() const {
+      if (empty) {
+        return "Joker";
+      }
         static const std::string rankNames[] = {
             "Joker", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
             "Eight", "Nine", "Ten", "Jack", "Queen", "King"
