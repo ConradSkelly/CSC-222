@@ -59,7 +59,7 @@ TEST_CASE("Test swap_cards in Deck") {
     CHECK(d.cards[0].to_string() == "Ace of Spades");
     CHECK(d.cards[51].to_string() == "2 of Clubs");
 }
-/*
+
 TEST_CASE("Test remove_card and add_card") {
     Cards::Deck deck;
     deck.shuffle();
@@ -72,7 +72,7 @@ TEST_CASE("Test remove_card and add_card") {
     CHECK(deck2.cards.size() == 1);
     CHECK((deck2.cards[0] == c) == true);
 }
-
+/*
 TEST_CASE("Test can swap two random cards") {
     Cards::Card c1(Cards::Suit::Heart, Cards::Rank::Queen);
     Cards::Card c2(Cards::Suit::Diamond, Cards::Rank::Jack);

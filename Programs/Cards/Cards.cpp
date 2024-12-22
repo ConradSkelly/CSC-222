@@ -1,5 +1,6 @@
 #include "Cards.h"
 #include <iostream>
+#include <random>
 
 namespace Cards {
 
@@ -114,6 +115,21 @@ namespace Cards {
         Card temp = cards[card1];
         cards[card1] = cards[card2];
         cards[card2] = temp;
+    }
+
+    void Deck::add_card(Card card) {
+        cards.push_back(card);
+    }
+
+    Card Deck::remove_card() {
+        Card card = cards.back();
+        cards.pop_back();
+        return card;
+    }
+
+    void Deck::shuffle() {
+        std::default_random_engine rng = std::default_random_engine();
+        std::shuffle(cards.begin(), cards.end(), rng);
     }
 
 } // namespace Cards
