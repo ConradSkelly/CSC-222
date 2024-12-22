@@ -3,13 +3,12 @@
 
 namespace Cards {
 
-	Card::Card() {
-      empty = true;
-	}
+	  Card::Card() {
+        suit = Suit::None;
+        rank = Rank::Joker;
+	  }
 
-    Card::Card(Suit suit, Rank rank) : suit(suit), rank(rank) {
-      empty = false;
-    }
+    Card::Card(Suit suit, Rank rank) : suit(suit), rank(rank) {}
 
     bool Card::operator==(const Card& other) const {
         return (suit == other.suit && rank == other.rank);
@@ -32,16 +31,16 @@ namespace Cards {
     }
 
     std::string Card::to_string() const {
-      if (empty) {
-        return "Joker";
-      }
+        if (suit == Suit::None || rank == Rank::Joker)
+            return "Joker";
+        
         static const std::string rankNames[] = {
-            "Joker", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
-            "Eight", "Nine", "Ten", "Jack", "Queen", "King"
+            "2", "3", "4", "5", "6", "7", "8", "9",
+            "10", "Jack", "Queen", "King", "Ace", "Joker"
         };
 
         static const std::string suitNames[] = {
-            "Clubs", "Diamonds", "Hearts", "Spades"
+            "Clubs", "Diamonds", "Hearts", "Spades", "None"
         };
 
         return rankNames[static_cast<int>(rank)] + " of " + suitNames[static_cast<int>(suit)];
@@ -89,6 +88,19 @@ namespace Cards {
             else low = mid + 1;
         }
         return -1;
+    }
+
+    Deck::Deck() {
+        cards = std::vector<Card>();
+
+        for (int suit = 0; suit < 4; suit++)
+            for (int rank = 0; rank < 13; rank++)
+                cards.push_back(Card(static_cast<Suit>(suit), static_cast<Rank>(rank)));
+    }
+
+    Deck::Deck(int length) {
+        while (cards.size() < length)
+            cards.push_back(Card());
     }
 
 } // namespace Cards

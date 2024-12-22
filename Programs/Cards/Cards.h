@@ -5,11 +5,9 @@
 
 namespace Cards {
 
-    enum class Suit { None, Club, Diamond, Heart, Spade };
+    enum class Suit { Club, Diamond, Heart, Spade, None };
 
     enum class Rank {
-        Joker,
-        Ace,
         Two,
         Three,
         Four,
@@ -21,7 +19,9 @@ namespace Cards {
         Ten,
         Jack,
         Queen,
-        King
+        King,
+        Ace,
+        Joker
     };
 
     class Card {
