@@ -132,4 +132,10 @@ namespace Cards {
         std::shuffle(cards.begin(), cards.end(), rng);
     }
 
+    void swap_card(Card *card1, Card *card2) {
+        Card temp = *card1;
+        *card1 = *card2;
+        *card2 = temp;
+    }
+
 } // namespace Cards
