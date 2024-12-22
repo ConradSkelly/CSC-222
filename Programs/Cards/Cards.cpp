@@ -103,4 +103,11 @@ namespace Cards {
             cards.push_back(Card());
     }
 
+    int Deck::find(Card card) {
+        for (int index = 0; index < cards.size(); index++)
+            if (cards[index] == card)
+                return index;
+        return -1;
+    }
+
 } // namespace Cards
