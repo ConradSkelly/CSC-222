@@ -31,7 +31,7 @@ namespace Cards {
         return !(*this < other);
     }
 
-    std::string Card::toString() const {
+    std::string Card::to_string() const {
       if (empty) {
         return "Joker";
       }
@@ -60,7 +60,7 @@ namespace Cards {
     std::string deckToString(const std::vector<Card>& deck) {
         std::string result;
         for (const auto& card : deck) {
-            result += card.toString() + ", ";
+            result += card.to_string() + ", ";
         }
         if (!result.empty()) {
             result.pop_back();
