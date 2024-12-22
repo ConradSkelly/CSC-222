@@ -52,14 +52,14 @@ TEST_CASE("Test find Card in Deck") {
     int pos2 = d.find(c2);
     CHECK(pos2 == -1);
 }
-/*
+
 TEST_CASE("Test swap_cards in Deck") {
     Cards::Deck d;
     d.swap_cards(0, 51);
     CHECK(d.cards[0].to_string() == "Ace of Spades");
     CHECK(d.cards[51].to_string() == "2 of Clubs");
 }
-
+/*
 TEST_CASE("Test remove_card and add_card") {
     Cards::Deck deck;
     deck.shuffle();

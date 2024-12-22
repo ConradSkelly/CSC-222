@@ -110,4 +110,10 @@ namespace Cards {
         return -1;
     }
 
+    void Deck::swap_cards(int card1, int card2) {
+        Card temp = cards[card1];
+        cards[card1] = cards[card2];
+        cards[card2] = temp;
+    }
+
 } // namespace Cards
