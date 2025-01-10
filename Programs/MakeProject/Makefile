@@ -1,3 +1,8 @@
 some_file:
-	echo This line is too long, so \
-		it is broken up into multiple lines
+	touch some_file
+	touch clean
+
+.PHONY: clean
+clean:
+	rm -f some_file
+	rm -f clean
