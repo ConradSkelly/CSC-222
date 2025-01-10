@@ -1,21 +1,12 @@
-blah: blah.o
-	gcc blah.o -o blah
+files := file1 file2
+some_file: $(files)
+	echo "Look at this variable: " $(files)
+	touch some_file
 
-blah.o: blah.c
-	gcc -c blah.c -o blah.o
-
-blah.c:
-	echo int main() { return 0; } > blah.c
-
-some_file: other_file
-	echo "This will always run, and runs second"
-	New-Item -Path "C:\Users\Conrad\Projects\CSC-222\Programs\MakeProject\some_file" -Itemtype File
-
-other_file:
-	echo "This will always run, and runs first"
-
-some_file:
-	New-Item -Path "C:\Users\Conrad\Projects\CSC-222\Programs\MakeProject\some_file" -Itemtype File
+file1:
+	echo >> file1
+file2:
+	echo >> file2
 
 clean:
-	rm -f some_file
+	rm -f file1 file2 some_file
