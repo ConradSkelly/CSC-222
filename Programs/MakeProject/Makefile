@@ -1,11 +1,7 @@
-foo := a.o b.o l.a c.o
-one := $(patsubst %.o,%.c,$(foo))
-# This is a shorthand for the above
-two := $(foo:%.o=%.c)
-# This is the suffix-only shorthand, and is also equivalent to the above.
-three := $(foo:.o=.c)
+foo := who are you
+# For each "word" in foo, output that same word with an exclamation after
+bar := $(foreach wrd,$(foo),$(wrd)!)
 
 all:
-	echo $(one)
-	echo $(two)
-	echo $(three)
+	# Output is "who! are! you!"
+	@echo $(bar)
