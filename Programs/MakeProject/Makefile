@@ -1,19 +1,20 @@
-objects = foo.o bar.o all.o
-all: $(objects)
-	$(CC) $^ -o all
+obj_files = foo.result bar.o lose.o
+src_files = foo.raw bar.c lose.c
 
-# Syntax - targets ...: target-pattern: prereq-patterns ...
-# In the case of the first target, foo.o, the target-pattern matches foo.o and sets the "stem" to be "foo".
-# It then replaces the '%' in prereq-patterns with that stem
-$(objects): %.o: %.c
-	$(CC) -c $^ -o $@
+all: $(obj_files)
+# Note: PHONY is important here. Without it, implicit rules will try to build the executable "all", since the prereqs are ".o" files.
+.PHONY: all
 
-all.c:
-	echo "int main() { return 0; }" > all.c
+# Ex 1: .o files depend on .c files. Though we don't actually make the .o file.
+$(filter %.o,$(obj_files)): %.o: %.c
+	echo "target: $@ prereq: $<"
 
-# Note: all.c does not use this rule because Make prioritizes more specific matches when there is more than one match.
-%.c:
-	echo >> $@
+# Ex 2: .result files depend on .raw files. Though we don't actually make the .result file.
+$(filter %.result,$(obj_files)): %.result: %.raw
+	echo "target: $@ prereq: $<"
+
+%.c %.raw:
+	touch $@
 
 clean:
-	rm -f *.c *.o all
+	rm -f $(src_files)
