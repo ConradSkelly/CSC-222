@@ -1,6 +1,7 @@
 one = hello
-# one gets defined as a simply expanded variable (:=) and thus can handle appending
-one := ${one} there
+one ?= will not be set
+two ?= will be set
 
 all:
 	echo $(one)
+	echo $(two)
