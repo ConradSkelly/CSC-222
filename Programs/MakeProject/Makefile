@@ -1,7 +1,8 @@
-%.c: one = cool
+foo = ok
 
-blah.c:
-	echo one is defined: $(one)
-
-other:
-	echo one is nothing: $(one)
+all:
+ifeq ($(foo), ok)
+	echo "foo equals ok"
+else
+	echo "nope"
+endif
