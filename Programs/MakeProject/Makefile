@@ -1,2 +1,7 @@
-%.o : %.c
-		$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+all: blah
+
+blah::
+	echo "hello"
+
+blah::
+	echo "hello again"
