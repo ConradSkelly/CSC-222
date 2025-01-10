@@ -1,8 +1,11 @@
-x := dude
+all: one two three
 
-all:
-	echo $(x)
-	echo ${x}
+one:
+	echo >> one
+two:
+	echo >> two
+three:
+	echo >> three
 
-	# Bad practice, but works
-	echo $x 
+clean:
+	rm -f one two three
