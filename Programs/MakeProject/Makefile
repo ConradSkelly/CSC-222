@@ -1,8 +1,11 @@
-foo = ok
+
+nullstring =
+foo = $(nullstring) # end of line; there is a space here
 
 all:
-ifeq ($(foo), ok)
-	echo "foo equals ok"
-else
-	echo "nope"
+ifeq ($(strip $(foo)),)
+	echo "foo is empty after being stripped"
+endif
+ifeq ($(nullstring),)
+	echo "nullstring doesn't even have spaces"
 endif
