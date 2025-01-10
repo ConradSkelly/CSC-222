@@ -1,16 +1,23 @@
-thing_wrong := *.o # Don't do this! '*' will not get expanded
-thing_right := $(wildcard *.o)
+hey: one two
+	# Outputs "hey", since this is the target name
+	echo $@
 
-all: one two three four
+	# Outputs all prerequisites newer than the target
+	echo $?
 
-# Fails, because $(thing_wrong) is the string "*.o"
-one: $(thing_wrong)
+	# Outputs all prerequisites
+	echo $^
 
-# Stays as *.o if there are no files that match this pattern :(
-two: *.o 
+	# Outputs the first prerequisite
+	echo $<
 
-# Works as you would expect! In this case, it does nothing.
-three: $(thing_right)
+	echo >> hey
 
-# Same as rule three
-four: $(wildcard *.o)
+one:
+	echo >> one
+
+two:
+	echo >> two
+
+clean:
+	rm -f hey one two
