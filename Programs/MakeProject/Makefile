@@ -1,23 +1,12 @@
-hey: one two
-	# Outputs "hey", since this is the target name
-	echo $@
+CC = gcc
+CFLAGS = -g
 
-	# Outputs all prerequisites newer than the target
-	echo $?
+# Implicit rule #1: blah is built via the C linker implicit rule
+# Implicit rule #2: blah.o is built via the C compilation implicit rule, because blah.c exists
+blah: blah.o
 
-	# Outputs all prerequisites
-	echo $^
-
-	# Outputs the first prerequisite
-	echo $<
-
-	echo >> hey
-
-one:
-	echo >> one
-
-two:
-	echo >> two
+blah.c:
+	echo "int main() { return 0; }" > blah.c
 
 clean:
-	rm -f hey one two
+	rm -f blah*
