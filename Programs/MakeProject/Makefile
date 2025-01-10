@@ -1,3 +1,4 @@
-all:
-	@echo "This make line will not be printed"
-	echo "But this will"
+SHELL=/bin/bash
+
+cool:
+	echo "Hello from bash"
