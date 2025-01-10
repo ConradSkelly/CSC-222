@@ -1,8 +1,7 @@
-new_contents = "hello:\n\ttouch inside_file"
+# Run this with "export shell_env_var='I am an environment variable'; make"
 all:
-	mkdir -p subdir
-	printf $(new_contents) | sed -e 's/^ //' > subdir/makefile
-	cd subdir && $(MAKE)
+	# Print out the Shell variable
+	echo $$shell_env_var
 
-clean:
-	rm -rf subdir
+	# Print out the Make variable
+	echo $(shell_env_var)
