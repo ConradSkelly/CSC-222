@@ -1,3 +1,5 @@
+foo := start
+foo += more
+
 all:
-	# Undefined variables are just empty strings!
-	echo $(nowhere)
+	echo $(foo)
