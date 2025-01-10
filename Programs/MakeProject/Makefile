@@ -1,7 +1,7 @@
-foo := who are you
-# For each "word" in foo, output that same word with an exclamation after
-bar := $(foreach wrd,$(foo),$(wrd)!)
+foo := $(if this-is-not-empty,then!,else!)
+empty :=
+bar := $(if $(empty),then!,else!)
 
 all:
-	# Output is "who! are! you!"
+	@echo $(foo)
 	@echo $(bar)
