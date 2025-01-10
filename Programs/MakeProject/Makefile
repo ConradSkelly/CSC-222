@@ -1,8 +1,10 @@
-some_file:
-	touch some_file
-	touch clean
+.DELETE_ON_ERROR:
+all: one two
 
-.PHONY: clean
-clean:
-	rm -f some_file
-	rm -f clean
+one:
+	touch one
+	false
+
+two:
+	touch two
+	false
