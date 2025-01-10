@@ -1,2 +1,5 @@
+obj_files = foo.result bar.o lose.o
+filtered_files = $(filter %.o,$(obj_files))
+
 all:
-	@echo $(shell ls -la) # Very ugly because the newlines are gone!
+	@echo $(filtered_files)
