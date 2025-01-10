@@ -1,11 +1,10 @@
-
-nullstring =
-foo = $(nullstring) # end of line; there is a space here
+bar =
+foo = $(bar)
 
 all:
-ifeq ($(strip $(foo)),)
-	echo "foo is empty after being stripped"
+ifdef foo
+	echo "foo is defined"
 endif
-ifeq ($(nullstring),)
-	echo "nullstring doesn't even have spaces"
+ifndef bar
+	echo "but bar is not"
 endif
