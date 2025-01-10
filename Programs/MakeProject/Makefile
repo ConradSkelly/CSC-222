@@ -1,7 +1,9 @@
-one = hello
-one ?= will not be set
-two ?= will be set
+with_spaces = hello   # with_spaces has many spaces after "hello"
+after = $(with_spaces)there
+
+nullstring =
+space = $(nullstring) # Make a variable with a single space.
 
 all:
-	echo $(one)
-	echo $(two)
+	echo "$(after)"
+	echo start"$(space)"end
