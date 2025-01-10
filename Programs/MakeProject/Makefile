@@ -1,7 +1,3 @@
-all: blah
-
-blah::
-	echo "hello"
-
-blah::
-	echo "hello again"
+all:
+	@echo "This make line will not be printed"
+	echo "But this will"
