@@ -1,11 +1,8 @@
-#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
-#endif
-
+#include <iostream>
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <iphlpapi.h>
 #include <stdio.h>
 
 #pragma comment(lib, "Ws2_32.lib")
@@ -20,9 +17,14 @@ int _cdecl main(int argc, char **argv) {
 
     SOCKET ConnectSocket = INVALID_SOCKET;
 
-    const char *sendbuf = "this is a test";
     int recvbuflen = DEFAULT_BUFLEN;
+    char sendbuf[DEFAULT_BUFLEN];
     char recvbuf[DEFAULT_BUFLEN];
+
+    std::cout << "enter your message: ";
+    std::cin.getline(sendbuf, DEFAULT_BUFLEN);
+
+    sendbuf[strcspn(sendbuf, "\n")] = 0;
 
     struct addrinfo *result = NULL,
             *ptr = NULL,
