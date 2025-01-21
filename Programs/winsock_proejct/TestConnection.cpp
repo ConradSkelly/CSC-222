@@ -6,6 +6,5 @@
 
 TEST_CASE("Testing Connection") {
 
-  CHECK( == 1);
-
-    }
+  CHECK();
+}

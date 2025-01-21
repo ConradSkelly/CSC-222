@@ -19,6 +19,8 @@ struct Client {
     char recvbuf[DEFAULT_BUFLEN];
 
     int ConnectToServer();
+    std::string SendAndRecive();
+    int Shutdown();
     Client(std::string host, std::string port);
 };
 

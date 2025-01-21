@@ -72,6 +72,54 @@ int Client::ConnectToServer() {
     return 1;
 }
 
+std::string Client::SendAndRecive() {
+    iResult = send(ConnectSocket, sendbuf, (int) strlen(sendbuf), 0);
+    if (iResult == SOCKET_ERROR) {
+        printf("send failed: %d\n", WSAGetLastError());
+        closesocket(ConnectSocket);
+        WSACleanup();
+    }
+
+    printf("Bytes Sent: %ld\n", iResult);
+
+    iResult = shutdown(ConnectSocket, SD_SEND);
+    if (iResult == SOCKET_ERROR) {
+        printf("shutdown failed: %d\n", WSAGetLastError());
+        closesocket(ConnectSocket);
+        WSACleanup();
+    }
+
+    do {
+        iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+        if (iResult > 0)
+            printf("Bytes received: %d\n", iResult);
+        else if (iResult == 0)
+            printf("Connection closed\n");
+        else
+            printf("recv failed: %d\n", WSAGetLastError());
+    } while (iResult > 0);
+
+    return recvbuf;
+
+}
+
+int Client::Shutdown() {
+
+    iResult = shutdown(ConnectSocket, SD_SEND);
+    if (iResult == SOCKET_ERROR) {
+        printf("shutdown failed: %d\n", WSAGetLastError());
+        closesocket(ConnectSocket);
+        WSACleanup();
+        return 1;
+    }
+
+    closesocket(ConnectSocket);
+    WSACleanup();
+
+    return 0;
+
+}
+
 int Server::ConnectToClient(){
 
     struct addrinfo *result = NULL, *ptr = NULL, hints;
