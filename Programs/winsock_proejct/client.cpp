@@ -31,5 +31,5 @@ int main(int argc, char **argv) {
 
     client.ConnectToServer();
     client.SendAndRecive();
-    client.SendAndRecive();
+    client.Shutdown();
 }
