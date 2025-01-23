@@ -26,7 +26,7 @@ struct Connect4{
 
   int PlayersMove;
 
-  int Height;
+  int Height = 0;
 
   Connect4();
   Connect4(std::vector<std::vector<char>> Board);
