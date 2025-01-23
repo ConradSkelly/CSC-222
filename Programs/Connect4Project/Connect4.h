@@ -39,7 +39,7 @@ struct Connect4{
 
   void update(int col);
 
-  void MakeMove(bool PlayerOneTurn);
+  std::string MakeMove();
 
   int CountHeight(int PlayersMove);
 

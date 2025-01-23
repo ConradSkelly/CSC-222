@@ -24,5 +24,18 @@ TEST_CASE("Test can create Fractions using two constructors") {
         {'O','X',' ',' ',' ',' '},
         {'X','O',' ',' ',' ',' '}}
         );
-    CHECK(f2.to_string() == "      \n      \n      \n      \n      \n      \n    \n");
+    CHECK(f2.to_string() == "      \n      \n      \n      \n      \nOX    \nXO    \n");
+}
+
+TEST_CASE("testing human input") {
+    Connect4 f3({
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'},
+        {'0','0','0','0','0','0'}}
+        );
+    CHECK(f3.MakeMove() == "      \nX     \n      \n      \n      \n      \n      \n"); // assumeing imput of one
 }
