@@ -15,4 +15,14 @@ TEST_CASE("Test can create Fractions using two constructors") {
         {' ',' ',' ',' ',' ',' '}}
         );
     CHECK(f1.to_string() == "      \n      \n      \n      \n      \n      \n      \n");
+    Connect4 f2({
+        {' ',' ',' ',' ',' ',' '},
+        {' ',' ',' ',' ',' ',' '},
+        {' ',' ',' ',' ',' ',' '},
+        {' ',' ',' ',' ',' ',' '},
+        {' ',' ',' ',' ',' ',' '},
+        {'O','X',' ',' ',' ',' '},
+        {'X','O',' ',' ',' ',' '}}
+        );
+    CHECK(f2.to_string() == "      \n      \n      \n      \n      \n      \n    \n");
 }

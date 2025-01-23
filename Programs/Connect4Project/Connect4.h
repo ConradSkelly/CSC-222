@@ -12,7 +12,6 @@ enum GameState {
 
 
 
-
 struct Connect4{
   int rows;
   int cols;
@@ -23,13 +22,26 @@ struct Connect4{
   const char Player2 = 'O';
   const char Empty = ' ';
 
+  bool PlayerOneTurn;
+
+  int PlayersMove;
+
+  int Height;
+
   Connect4();
+  Connect4(std::vector<std::vector<char>> Board);
 
   void Display();
+
   std::string to_string();
 
-  Connect4(std::vector<std::vector<char>> Board);
+  bool CheckWin();
+
   void update(int col);
+
+  void MakeMove(bool PlayerOneTurn);
+
+  int CountHeight(int PlayersMove);
 
 };
 
