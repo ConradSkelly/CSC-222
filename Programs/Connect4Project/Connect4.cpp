@@ -15,8 +15,8 @@ Connect4::Connect4(){
 }
 
 Connect4::Connect4(std::vector<std::vector<char>> Board){
-  rows = 7;
-  cols = 6;
+  rows = 6;
+  cols = 7;
 
   this->Board = Board;
   PlayerOneTurn = true;
@@ -26,7 +26,7 @@ Connect4::Connect4(std::vector<std::vector<char>> Board){
 }
 
 std::string Connect4::to_string( ){
-  std::string output = "";
+  std::string output = "\n";
   for (int row = 0; row < rows; row++){
     for (int col = 0; col < cols; col++){
       output.push_back((Board[row][col]));
@@ -49,8 +49,8 @@ std::string Connect4::MakeMove(){
     } while (Height >= rows);
     std::cout << PlayersMove-1 << std::endl;
     std::cout << Height << std::endl;
-    Board[Height][PlayersMove-1] = Player1;
-    std::cout << Board[Height][PlayersMove-1] << std::endl;
+    Board[-Height + 5][PlayersMove-1] = Player1;
+
   }
 
   else{
