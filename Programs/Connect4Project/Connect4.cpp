@@ -93,7 +93,6 @@ int Connect4::CountHeight(int PlayersMove){
     if (Board[row][PlayersMove-1] == 'X' or Board[row][PlayersMove-1] == 'O')
       count++;
   }
-  std::cout << "the count is: " << count << std::endl;
   return count;
 }
 
@@ -116,6 +115,7 @@ void Connect4::InColumn(){
    Win = (WinCount >= 4);
    WinCount = 0;
   }
+
   else{
       for (int i = 0; i < 4; i++){
     if (InIndex(rows_cols.first, rows_cols.second+i)){
@@ -131,6 +131,39 @@ void Connect4::InColumn(){
    WinCount = 0;
   }
 }
+
+void Connect4::InRow(){
+  std::cout << WinCount << std::endl;
+  CheckLeft();
+  std::cout << WinCount << std::endl;
+  CheckRight();
+  std::cout << WinCount << std::endl;
+  Win = (WinCount >= 4);
+  WinCount = 0;
+}
+
+void Connect4::CheckLeft(){
+  for (int i = 0; i < 4; i = i+1){
+    if (InIndex(rows_cols.first-i, rows_cols.second)){
+      if (Board[rows_cols.first-i][rows_cols.second] == 'X')
+        WinCount++;
+      else
+        break;
+      }
+    }
+  }
+
+void Connect4::CheckRight(){
+  for (int i = 1; i < 4; i = i+1){
+    if (InIndex(rows_cols.first+i, rows_cols.second)){
+      if (Board[rows_cols.first+i][rows_cols.second] == 'X')
+        WinCount++;
+    else
+      break;
+    }
+  }
+}
+
 
 int Connect4::MakeMoveInColumnTest(){
   if (PlayerOneTurn){
@@ -159,6 +192,37 @@ int Connect4::MakeMoveInColumnTest(){
   Moves++;
   InColumn();
   return (Win);
+}
+
+int Connect4::MakeMoveInRowTest(){
+  if (PlayerOneTurn){
+    PlayerOneTurn = false;
+
+    do{
+    std::cout << "enter a interger from 1 to 7: ";
+    std::cin >> PlayersMove;
+    Height = Connect4::CountHeight(PlayersMove);
+    } while (Height >= rows);
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
+    Board[-Height + 5][PlayersMove-1] = Player1;
+  }
+
+  else{
+    PlayerOneTurn = true;
+
+    do{
+    std::cout << "enter a interger from 1 to 7: ";
+    std::cin >> PlayersMove;
+    Height = Connect4::CountHeight(PlayersMove);
+    } while (Height >= rows);
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
+    Board[-Height+5][PlayersMove-1] = Player2;
+  }
+  Moves++;
+
+  InRow();
+  return Win;
+
 }
 
 

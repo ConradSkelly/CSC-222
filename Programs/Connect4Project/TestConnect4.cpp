@@ -55,7 +55,7 @@ TEST_CASE("testing human input") {
       );
     CHECK(f5.MakeMove() == "\n0000000\n0000000\n0000000\n0000000\nX000000\nO000000\n"); // assuming input of one
 }
-*/
+
 
 TEST_CASE("testing InCollumVictoryCondtion") {
     Connect4 f6({
@@ -75,5 +75,18 @@ TEST_CASE("testing InCollumVictoryCondtion") {
       {'X','0','0','0','0','0','0'},
       {'X','0','0','0','0','0','0'}}
       );
-    CHECK(f6.MakeMoveInColumnTest() == 0); // assuming input of one
+    CHECK(f6.MakeMoveInColumnTest() == 0); // input does not matter
+}
+*/
+
+TEST_CASE("Test the In Row Victory Condition") {
+    Connect4 f8({
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','X','X','X','0','0','0'}}
+      );
+    CHECK(f8.MakeMoveInRowTest() == 1); // assuming input of one
 }

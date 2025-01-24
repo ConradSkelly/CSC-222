@@ -58,7 +58,13 @@ struct Connect4{
 
   void InColumn();
 
+  void InRow();
+  void CheckLeft();
+  void CheckRight();
+
   int MakeMoveInColumnTest();
+
+  int MakeMoveInRowTest();
 
 };
 
