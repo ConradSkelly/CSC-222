@@ -97,6 +97,7 @@ int Connect4::CountHeight(int PlayersMove){
 }
 
 bool Connect4::InIndex(int Rows, int Cols){
+  std::cout << Rows << " " << Cols << std::endl;
   return !(Rows> 5 or Rows < 0 or Cols < 0 or Cols > 6);
 }
 
@@ -144,8 +145,8 @@ void Connect4::InRow(){
 
 void Connect4::CheckLeft(){
   for (int i = 0; i < 4; i = i+1){
-    if (InIndex(rows_cols.first-i, rows_cols.second)){
-      if (Board[rows_cols.first-i][rows_cols.second] == 'X')
+    if (InIndex(rows_cols.first, rows_cols.second-i)){
+      if (Board[rows_cols.first][rows_cols.second-i] == 'X')
         WinCount++;
       else
         break;
@@ -155,8 +156,8 @@ void Connect4::CheckLeft(){
 
 void Connect4::CheckRight(){
   for (int i = 1; i < 4; i = i+1){
-    if (InIndex(rows_cols.first+i, rows_cols.second)){
-      if (Board[rows_cols.first+i][rows_cols.second] == 'X')
+    if (InIndex(rows_cols.first, rows_cols.second+i)){
+      if (Board[rows_cols.first][rows_cols.second+i] == 'X')
         WinCount++;
     else
       break;
