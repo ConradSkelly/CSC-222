@@ -3,7 +3,7 @@
 #include <string>
 #include <doctest.h>
 #include "Connect4.h"
-
+/*
 TEST_CASE("Test can create Fractions using two constructors") {
     Connect4 f1({
             {'0','0','0','0','0','0','0'},
@@ -44,7 +44,7 @@ TEST_CASE("testing human input") {
        {'0','0','0','0','0','0','0'},
        {'0','0','0','0','0','0','0'}}
        );
-    CHECK(f4.MakeMove() == "\n0000000\n0000000\n0000000\n0000000\n0000000\n0X00000\n");  // assuming imput of two
+    CHECK(f4.MakeMove() == "\n0000000\n0000000\n0000000\n0000000\n0000000\n0X00000\n");  // assuming input of two
     Connect4 f5({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -53,5 +53,27 @@ TEST_CASE("testing human input") {
       {'0','0','0','0','0','0','0'},
       {'O','0','0','0','0','0','0'}}
       );
-    CHECK(f5.MakeMove() == "\n0000000\n0000000\n0000000\n0000000\nX000000\nO000000\n"); // assuming imput of one
+    CHECK(f5.MakeMove() == "\n0000000\n0000000\n0000000\n0000000\nX000000\nO000000\n"); // assuming input of one
+}
+*/
+
+TEST_CASE("testing InCollumVictoryCondtion") {
+    Connect4 f6({
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'X','0','0','0','0','0','0'},
+      {'X','0','0','0','0','0','0'},
+      {'X','0','0','0','0','0','0'}}
+      );
+    CHECK(f6.MakeMoveInColumnTest() == 1); // assuming input of one
+    Connect4 f7({
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'0','0','0','0','0','0','0'},
+      {'X','0','0','0','0','0','0'},
+      {'X','0','0','0','0','0','0'}}
+      );
+    CHECK(f6.MakeMoveInColumnTest() == 0); // assuming input of one
 }

@@ -2,6 +2,7 @@
 #define CONNECT4_H
 #include <vector>
 #include <string>
+#include <utility>
 
 enum GameState {
   PLAYING,
@@ -22,11 +23,21 @@ struct Connect4{
   const char Player2 = 'O';
   const char Empty = ' ';
 
+  const int MaxMoves = 42;
+
   bool PlayerOneTurn;
+
+  bool Win;
 
   int PlayersMove;
 
-  int Height = 0;
+  int Height;
+
+  int Moves;
+
+  int WinCount;
+
+  std::pair<int,int> rows_cols;
 
   Connect4();
   Connect4(std::vector<std::vector<char>> Board);
@@ -35,13 +46,19 @@ struct Connect4{
 
   std::string to_string();
 
-  bool CheckWin();
+  void WinLogic();
 
   void update(int col);
 
   std::string MakeMove();
 
   int CountHeight(int PlayersMove);
+
+  bool InIndex(int, int);
+
+  void InColumn();
+
+  int MakeMoveInColumnTest();
 
 };
 

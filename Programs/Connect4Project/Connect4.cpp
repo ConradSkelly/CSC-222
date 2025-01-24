@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <utility>
 
 Connect4::Connect4(){
   rows = 6;
@@ -22,6 +23,10 @@ Connect4::Connect4(std::vector<std::vector<char>> Board){
   PlayerOneTurn = true;
   PlayersMove = 0;
   Height = 0;
+  Moves = 0;
+  rows_cols = std::make_pair(0, 0);
+  WinCount = 0;
+  Win = 0;
 
   std::cout << "this is the board stat in the start";
   for(int row = 0; row < rows; row++){
@@ -58,8 +63,7 @@ std::string Connect4::MakeMove(){
     std::cin >> PlayersMove;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
-    std::cout << PlayersMove-1 << std::endl;
-    std::cout << "the height is: " << Height << std::endl;
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
     Board[-Height + 5][PlayersMove-1] = Player1;
   }
 
@@ -71,8 +75,16 @@ std::string Connect4::MakeMove(){
     std::cin >> PlayersMove;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
+    Board[-Height+5][PlayersMove-1] = Player2;
   }
+  Moves++;
   return to_string();
+}
+
+void Connect4::WinLogic(){
+// check Column
+
 }
 
 int Connect4::CountHeight(int PlayersMove){
@@ -83,6 +95,70 @@ int Connect4::CountHeight(int PlayersMove){
   }
   std::cout << "the count is: " << count << std::endl;
   return count;
+}
+
+bool Connect4::InIndex(int Rows, int Cols){
+  return !(Rows> 5 or Rows < 0 or Cols < 0 or Cols > 6);
+}
+
+void Connect4::InColumn(){
+  if (!PlayerOneTurn){
+  for (int i = 0; i < 4; i++){
+    if (InIndex(rows_cols.first, rows_cols.second+i)){
+      if (Board[rows_cols.first+i][rows_cols.second] == 'X')
+        WinCount++;
+      }
+    else{
+      WinCount = 0;
+      break;
+      }
+  }
+   Win = (WinCount >= 4);
+   WinCount = 0;
+  }
+  else{
+      for (int i = 0; i < 4; i++){
+    if (InIndex(rows_cols.first, rows_cols.second+i)){
+      if (Board[rows_cols.first+i][rows_cols.second] == 'O')
+        WinCount++;
+      }
+    else{
+      WinCount = 0;
+      break;
+      }
+  }
+   Win = (WinCount >= 4);
+   WinCount = 0;
+  }
+}
+
+int Connect4::MakeMoveInColumnTest(){
+  if (PlayerOneTurn){
+    PlayerOneTurn = false;
+
+    do{
+    std::cout << "enter a interger from 1 to 7: ";
+    std::cin >> PlayersMove;
+    Height = Connect4::CountHeight(PlayersMove);
+    } while (Height >= rows);
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
+    Board[-Height + 5][PlayersMove-1] = Player1;
+  }
+
+  else{
+    PlayerOneTurn = true;
+
+    do{
+    std::cout << "enter a interger from 1 to 7: ";
+    std::cin >> PlayersMove;
+    Height = Connect4::CountHeight(PlayersMove);
+    } while (Height >= rows);
+    rows_cols = std::make_pair(-Height+5,PlayersMove-1);
+    Board[-Height+5][PlayersMove-1] = Player2;
+  }
+  Moves++;
+  InColumn();
+  return (Win);
 }
 
 
