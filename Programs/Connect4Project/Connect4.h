@@ -27,6 +27,8 @@ struct Connect4{
 
   std::string Display;
 
+  int PlayerInput;
+
   bool PlayerOneTurn;
 
   bool Win;
@@ -47,6 +49,7 @@ struct Connect4{
 
   Connect4();
   Connect4(std::vector<std::vector<char>> Board);
+  Connect4(std::vector<std::vector<char>> Board, int PlayerInput);
 
   std::string to_string();
 

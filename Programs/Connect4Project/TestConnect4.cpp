@@ -33,8 +33,8 @@ TEST_CASE("testing human input") {
         {'0','0','0','0','0','0','0'},
         {'0','0','0','0','0','0','0'},
         {'0','0','0','0','0','0','0'}}
-        );
-    CHECK(f3.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\n0000000\nX000000\n"); // assuming input of one
+        ,1);
+    CHECK(f3.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\n0000000\nX000000\n");
 
     Connect4 f4({
        {'0','0','0','0','0','0','0'},
@@ -43,8 +43,8 @@ TEST_CASE("testing human input") {
        {'0','0','0','0','0','0','0'},
        {'0','0','0','0','0','0','0'},
        {'0','0','0','0','0','0','0'}}
-       );
-    CHECK(f4.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\n0000000\n0X00000\n");  // assuming input of two
+       ,2);
+    CHECK(f4.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\n0000000\n0X00000\n");
     Connect4 f5({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -52,8 +52,8 @@ TEST_CASE("testing human input") {
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
       {'O','0','0','0','0','0','0'}}
-      );
-    CHECK(f5.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\nX000000\nO000000\n"); // assuming input of one
+      ,1);
+    CHECK(f5.MakeMoveDisplayTest() == "\n0000000\n0000000\n0000000\n0000000\nX000000\nO000000\n");
 }
 
 TEST_CASE("testing InCollumVictoryCondtion") {
@@ -64,8 +64,8 @@ TEST_CASE("testing InCollumVictoryCondtion") {
       {'X','0','0','0','0','0','0'},
       {'X','0','0','0','0','0','0'},
       {'X','0','0','0','0','0','0'}}
-      );
-    CHECK(f6.MakeMoveInColumnTest() == 1); // assuming input of one
+      ,1);
+    CHECK(f6.MakeMoveInColumnTest() == 1);
     Connect4 f7({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -73,8 +73,8 @@ TEST_CASE("testing InCollumVictoryCondtion") {
       {'0','0','0','0','0','0','0'},
       {'X','0','0','0','0','0','0'},
       {'X','0','0','0','0','0','0'}}
-      );
-    CHECK(f6.MakeMoveInColumnTest() == 0); // input does not matter
+      ,1);
+    CHECK(f6.MakeMoveInColumnTest() == 0);
 }
 
 TEST_CASE("Test the In Row Victory Condition") {
@@ -85,8 +85,8 @@ TEST_CASE("Test the In Row Victory Condition") {
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
       {'0','X','X','X','0','0','0'}}
-      );
-    CHECK(f8.MakeMoveInRowTest() == 1); // assuming input of one
+      ,1);
+    CHECK(f8.MakeMoveInRowTest() == 1);
     Connect4 f9({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -94,8 +94,8 @@ TEST_CASE("Test the In Row Victory Condition") {
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
       {'X','X','0','X','0','0','0'}}
-      );
-    CHECK(f9.MakeMoveInRowTest() == 1); // assuming input of three
+      ,3);
+    CHECK(f9.MakeMoveInRowTest() == 1);
 }
 
 
@@ -107,8 +107,8 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','X','O','0','0','0'},
       {'0','X','O','O','0','0','0'},
       {'0','O','X','X','0','0','0'}}
-      );
-    CHECK(f10.MakeMoveInDiagonalTest() == 1); // assuming input of one
+      ,1);
+    CHECK(f10.MakeMoveInDiagonalTest() == 1);
     Connect4 f11({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -116,8 +116,8 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','X','O','0','0','0'},
       {'0','X','O','O','0','0','0'},
       {'X','O','X','X','0','0','0'}}
-      );
-    CHECK(f11.MakeMoveInDiagonalTest() == 1); // assuming input of four
+      ,4);
+    CHECK(f11.MakeMoveInDiagonalTest() == 1);
     Connect4 f12({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -125,8 +125,8 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','0','O','0','0','0'},
       {'0','X','O','O','0','0','0'},
       {'X','O','X','X','0','0','0'}}
-      );
-    CHECK(f12.MakeMoveInDiagonalTest() == 1); // assuming input of three
+      ,3);
+    CHECK(f12.MakeMoveInDiagonalTest() == 1);
   Connect4 f13({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -134,8 +134,8 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','0','O','X','0','0'},
       {'0','0','0','O','X','X','0'},
       {'0','0','0','O','O','X','0'}}
-      );
-    CHECK(f13.MakeMoveInDiagonalTest() == 1); // assuming input of seven
+      ,7);
+    CHECK(f13.MakeMoveInDiagonalTest() == 1);
     Connect4 f14({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -143,8 +143,8 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','0','O','X','0','0'},
       {'0','0','0','O','X','X','0'},
       {'0','0','0','O','O','X','X'}}
-      );
-    CHECK(f14.MakeMoveInDiagonalTest() == 1); // assuming input of four
+      ,4);
+    CHECK(f14.MakeMoveInDiagonalTest() == 1);
   Connect4 f15({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},
@@ -152,11 +152,11 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       {'0','0','0','O','0','0','0'},
       {'0','0','0','O','X','X','0'},
       {'0','0','0','O','O','X','X'}}
-      );
-  CHECK(f15.MakeMoveInDiagonalTest() == 1); // assuming input of five
+      ,5);
+  CHECK(f15.MakeMoveInDiagonalTest() == 1);
 }
 
-TEST_CASE("makeing sure works temp") {
+TEST_CASE("run entire game with player input essentially if the game completes") {
   Connect4 f16({
       {'0','0','0','0','0','0','0'},
       {'0','0','0','0','0','0','0'},

@@ -48,6 +48,34 @@ Connect4::Connect4(std::vector<std::vector<char>> Board){
 
 }
 
+Connect4::Connect4(std::vector<std::vector<char>> Board, int PlayerInput){
+  rows = 6;
+  cols = 7;
+
+  this-> PlayerInput = PlayerInput;
+  this->Board = Board;
+  PlayerOneTurn = true;
+  PlayersMove = 0;
+  Height = 0;
+  Moves = 0;
+  rows_cols = std::make_pair(0, 0);
+  WinCount = 0;
+  WinDiagonalBottomToTop = 0;
+  WinDiagonalTopToBottom = 0;
+  Win = 0;
+  Display = ' ';
+
+  std::cout << "this is the board stat in the start";
+  for(int row = 0; row < rows; row++){
+    for(int col = 0; col < cols; col++){
+      std::cout << Board[row][col];
+    }
+    std::cout << std::endl;
+  }
+
+}
+
+
 std::string Connect4::to_string( ){
   std::string output = "\n";
   for (int row = 0; row < rows; row++){
@@ -319,7 +347,7 @@ int Connect4::MakeMoveInColumnTest(){
 
     do{
     std::cout << "enter a interger from 1 to 7: ";
-    std::cin >> PlayersMove;
+    PlayersMove = PlayerInput;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
     rows_cols = std::make_pair(-Height+5,PlayersMove-1);
@@ -348,7 +376,7 @@ int Connect4::MakeMoveInRowTest(){
 
     do{
     std::cout << "enter a interger from 1 to 7: ";
-    std::cin >> PlayersMove;
+    PlayersMove = PlayerInput;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
     rows_cols = std::make_pair(-Height+5,PlayersMove-1);
@@ -379,7 +407,7 @@ int Connect4::MakeMoveInDiagonalTest(){
 
     do{
     std::cout << "enter a interger from 1 to 7: ";
-    std::cin >> PlayersMove;
+    PlayersMove = PlayerInput;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
     rows_cols = std::make_pair(-Height+5,PlayersMove-1);
@@ -415,7 +443,7 @@ std::string Connect4::MakeMoveDisplayTest(){
     PlayerOneTurn = false;
     do{
     std::cout << "enter a interger from 1 to 7: ";
-    std::cin >> PlayersMove;
+    PlayersMove = PlayerInput;
     Height = Connect4::CountHeight(PlayersMove);
     } while (Height >= rows);
     rows_cols = std::make_pair(-Height+5,PlayersMove-1);
