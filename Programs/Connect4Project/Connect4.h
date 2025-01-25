@@ -25,6 +25,8 @@ struct Connect4{
 
   const int MaxMoves = 42;
 
+  std::string Display;
+
   bool PlayerOneTurn;
 
   bool Win;
@@ -37,12 +39,14 @@ struct Connect4{
 
   int WinCount;
 
+  int WinDiagonalBottomToTop;
+  int WinDiagonalTopToBottom;
+
+
   std::pair<int,int> rows_cols;
 
   Connect4();
   Connect4(std::vector<std::vector<char>> Board);
-
-  void Display();
 
   std::string to_string();
 
@@ -50,21 +54,37 @@ struct Connect4{
 
   void update(int col);
 
-  std::string MakeMove();
+  int MakeMove();
 
   int CountHeight(int PlayersMove);
 
   bool InIndex(int, int);
 
-  void InColumn();
+  int  InColumn();
 
-  void InRow();
+  int  InRow();
   void CheckLeft();
   void CheckRight();
+
+  int InDiagonal();
+
+  void CheckDiagonalBottomToTop();
+  void CheckDiagonalBottomToTopLeft();
+  void CheckDiagonalBottomToTopRight();
+
+  void CheckDiagonalTopToBottom();
+  void CheckDiagonalTopToBottomLeft();
+  void CheckDiagonalTopToBottomRight();
 
   int MakeMoveInColumnTest();
 
   int MakeMoveInRowTest();
+
+  int MakeMoveInDiagonalTest();
+
+  std::string MakeMoveDisplayTest();
+
+  int RunGame();
 
 };
 
