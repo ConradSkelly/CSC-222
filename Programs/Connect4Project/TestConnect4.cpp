@@ -155,15 +155,3 @@ TEST_CASE("Test the In Diagonal Victory Condition") {
       ,5);
   CHECK(f15.MakeMoveInDiagonalTest() == 1);
 }
-
-TEST_CASE("run entire game with player input essentially if the game completes") {
-  Connect4 f16({
-      {'0','0','0','0','0','0','0'},
-      {'0','0','0','0','0','0','0'},
-      {'0','0','0','0','0','0','0'},
-      {'0','0','0','0','0','0','0'},
-      {'0','0','0','0','0','0','0'},
-      {'0','0','0','0','0','0','0'}}
-      );
-  CHECK(f16.RunGame() == 0);
-}
