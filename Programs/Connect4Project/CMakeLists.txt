@@ -49,7 +49,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
 message(STATUS "Your compiler is: ${CMAKE_CXX_COMPILER}")
 message(STATUS "Your RELEASE compile flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
 message(STATUS "Your DEBUG compile flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "You are currently building for: " ${CMAKE_BUILD_TYPE})
+message(STATUS "You are currently building for: ${CMAKE_BUILD_TYPE}")
 
 # Add our new module to this build
 add_subdirectory(connect4)
