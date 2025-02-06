@@ -38,6 +38,23 @@ $ ./build/Connect4
 The first command generates the build files, the second actually performs the build.
 So, similar to just running `make` when you edit a file, you can just run `cmake --build build`.
 
+With multiple targets, you can also just build the one you care about.
+
+```shell
+$ cmake --build build --target test_Connect4
+[ 25%] Building CXX object connect4/CMakeFiles/connect4.dir/Connect4.cpp.o
+[ 50%] Linking CXX static library libconnect4.a
+[ 50%] Built target connect4
+[ 75%] Building CXX object CMakeFiles/test_Connect4.dir/TestConnect4.cpp.o
+[100%] Linking CXX executable test_Connect4
+[100%] Built target test_Connect4
+$ ./build/test_Connect4
+[doctest] doctest version is "2.4.11"
+[doctest] run with "--help" for options
+this is the board stat in the start0000000
+...
+```
+
 ## Using VSCode
 
 Their link does a much better job than I could

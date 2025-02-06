@@ -53,3 +53,20 @@ message(STATUS "You are currently building for: " ${CMAKE_BUILD_TYPE})
 
 # Add our new module to this build
 add_subdirectory(connect4)
+
+# Now let's go ahead and add our test binary as well.
+# We need to do the following:
+# 1. Add a new target for it
+# 2. Make doctest.h include-able for it
+# 3. Link against connect4, just like our main does
+# Out of convention, I'm going to name this binary `test_Connect4`
+set(TEST_TARGET_NAME test_${TARGET_NAME})
+add_executable(${TEST_TARGET_NAME}
+    TestConnect4.cpp # Note: I was lazy this time. I usually do a separate target_sources() call. This is shorthand.
+)
+target_link_libraries(${TEST_TARGET_NAME} PRIVATE
+    connect4
+)
+target_include_directories(${TEST_TARGET_NAME} PRIVATE
+    external/doctest
+)
