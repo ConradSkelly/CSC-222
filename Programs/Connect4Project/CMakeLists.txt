@@ -33,8 +33,14 @@ add_executable(${TARGET_NAME})
 # It might be a bit early to worry about the nuance here. As a rule of thumb, just keep this PRIVATE.
 # If you find yourself needing to pass along dependencies, you can make it PUBLIC.
 target_sources(${TARGET_NAME} PRIVATE
-    Connect4.cpp
     runConnect4.cpp
+)
+
+# Note: We removed Connect4.cpp from the above line!
+# Now we just let the connect4 library handle its own sources, and then we'll link against it.
+# This way, we just have it as a dependency.
+target_link_libraries(${TARGET_NAME} PRIVATE
+    connect4
 )
 
 # Print-style debugging; it can be done for CMAKE too!
@@ -44,3 +50,6 @@ message(STATUS "Your compiler is: ${CMAKE_CXX_COMPILER}")
 message(STATUS "Your RELEASE compile flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
 message(STATUS "Your DEBUG compile flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
 message(STATUS "You are currently building for: " ${CMAKE_BUILD_TYPE})
+
+# Add our new module to this build
+add_subdirectory(connect4)
