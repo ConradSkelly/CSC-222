@@ -13,7 +13,7 @@ int globalArgc;
 char **globalArgv;
 std::string fileName;
 std::string target;
-std::vector<std::string> fileLines;
+std::vector<std::string> fileLine;
 
 int printLinesWithWords() {
     return 0;
@@ -22,30 +22,36 @@ int printLinesWithWords() {
 int Tflag() {
     std::vector<std::string> lastlines;
     int g = 0;
-    for (int i = fileLines.size() - numberOfLines; g < numberOfLines ; i++) {
-        lastlines.push_back(fileLines[i]);
+    for (int i = fileLine.size() - numberOfLines; g < numberOfLines ; i++) {
+        lastlines.push_back(fileLine[i]);
         g++;
     }
-    fileLines = lastlines;
+    fileLine = lastlines;
     return 0;
 }
 
 int Sflag() {
     int run = 0;
+    int beginingContext = 0;
     std::map<int, std::string> indexCount;
-    for (int i = 0; i < numberOfLines; i++) {
-        if (fileLines[i].find(target) != std::string::npos) {
-            for (int g = i - numberOfLines; g < i + contextDown; g++) {
-                std::cout << g << std::endl;
+    for (int i = 0; i < fileLine.size(); i++) {
+            if (fileLine[i].find(target) != std::string::npos) {
+            if (i > 0 and !beginingContext++) std::cout << "...\n";
+            for (int g = i - numberOfLines; g <= i + contextDown; g++) {
                 if (g < 0) g = 0;
                 if (indexCount.find(g) == indexCount.end()) {
-                    indexCount.insert(std::pair<int, std::string>(g, fileLines[g]));
-                    if (!run++) std::cout << indexCount.find(g)->second;
-                    else std::cout << "\n" << indexCount.find(g)->second;
+                    indexCount.insert(std::pair<int, std::string>(g, fileLine[g]));
+                    if (!run++) std::cout << indexCount.find(g) -> second;
+                    else std::cout << "\n" << indexCount.find(g) -> second;
                 }
+                beginingContext = 1;
+                if (g == fileLine.size() - 1) break;
             }
+            if (indexCount.find(fileLine.size() - 1) == indexCount.end() or !run) std::cout << "\n...";
         }
-
+    }
+    for (const auto pair : indexCount) {
+        std::cout << "key: " << pair.first << " value: " << pair.second << std::endl;
     }
     return 0;
 }
@@ -55,22 +61,26 @@ int catFile() {
     std::string data;
     std::ifstream inputFile(fileName);
     while (std::getline(inputFile, data)) {
-        fileLines.push_back(data);
+        fileLine.push_back(data);
     }
     if (sFlag) {
         Sflag();
         return 0;
     }
-    if (tFlag and numberOfLines > 0) Tflag();
+    if (tFlag and numberOfLines > 0) {
+        Sflag();
+        inputFile.close();
+        return 0;
+    }
     if (numberOfLines > 0) {
         for (int i = 0; i < numberOfLines; i++) {
             if (!sFlag) {
-                if (!run++) std::cout << fileLines[i];
-                else std::cout << "\n" << fileLines[i];
+                if (!run++) std::cout << fileLine[i];
+                else std::cout << "\n" << fileLine[i];
             }
-            if (fileLines[i].find(target) != std::string::npos and sFlag) {
-                if (!run++) std::cout << fileLines[i];
-                else std::cout << "\n" << fileLines[i];
+            if (fileLine[i].find(target) != std::string::npos and sFlag) {
+                if (!run++) std::cout << fileLine[i];
+                else std::cout << "\n" << fileLine[i];
             }
         }
     }
