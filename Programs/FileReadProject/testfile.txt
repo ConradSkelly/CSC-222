@@ -1,4 +1,0 @@
-this.i.a.test.file
-line1
-2lines
-line3not4or5
