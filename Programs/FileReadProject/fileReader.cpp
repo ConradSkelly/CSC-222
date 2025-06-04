@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -7,6 +8,7 @@
 int hFlag = 0;
 int tFlag = 0;
 int sFlag = 0;
+int iFlag = 0;
 int numberOfLines;
 int contextDown;
 int globalArgc;
@@ -14,8 +16,15 @@ char **globalArgv;
 std::string fileName;
 std::string target;
 std::vector<std::string> fileLine;
+std::vector<std::string> comperisonVecctor;
 
-int printLinesWithWords() {
+int Iflag() {
+    for (std::string& line : fileLine) {
+        std::string capitilizedLine = line;
+        std::transform(capitilizedLine.begin(), capitilizedLine.end(), capitilizedLine.begin(), ::toupper);
+        comperisonVecctor.push_back(capitilizedLine);
+    }
+    std::transform(target.begin(), target.end(), target.begin(), ::toupper);
     return 0;
 }
 
@@ -32,27 +41,30 @@ int Tflag() {
 
 int Sflag() {
     int run = 0;
-    int beginingContext = 0;
+    int continuationUp = -1;
+    int continuationDown = -1;
+    int continuationUpHasRun = 0;
     std::map<int, std::string> indexCount;
     for (int i = 0; i < fileLine.size(); i++) {
-            if (fileLine[i].find(target) != std::string::npos) {
-            if (i > 0 and !beginingContext++) std::cout << "...\n";
+        continuationUp++;
+        continuationDown++;
+            if (comperisonVecctor[i].find(target) != std::string::npos) {
             for (int g = i - numberOfLines; g <= i + contextDown; g++) {
+                if (continuationUp > numberOfLines and !continuationUpHasRun) std::cout << "...\n";
+                if (continuationDown > contextDown + numberOfLines and continuationUpHasRun) std::cout << "\n...";
                 if (g < 0) g = 0;
                 if (indexCount.find(g) == indexCount.end()) {
                     indexCount.insert(std::pair<int, std::string>(g, fileLine[g]));
                     if (!run++) std::cout << indexCount.find(g) -> second;
                     else std::cout << "\n" << indexCount.find(g) -> second;
                 }
-                beginingContext = 1;
+                continuationUpHasRun++;
+                continuationDown = -1;
                 if (g == fileLine.size() - 1) break;
             }
-            if (indexCount.find(fileLine.size() - 1) == indexCount.end() or !run) std::cout << "\n...";
         }
     }
-    for (const auto pair : indexCount) {
-        std::cout << "key: " << pair.first << " value: " << pair.second << std::endl;
-    }
+    if (indexCount.find(fileLine.size() - 1) == indexCount.end()) std::cout << "\n...";
     return 0;
 }
 
@@ -63,25 +75,20 @@ int catFile() {
     while (std::getline(inputFile, data)) {
         fileLine.push_back(data);
     }
+    if (iFlag) Iflag();
     if (sFlag) {
-        Sflag();
-        return 0;
-    }
-    if (tFlag and numberOfLines > 0) {
         Sflag();
         inputFile.close();
         return 0;
     }
+
+    if (tFlag) {
+        Tflag();
+    }
     if (numberOfLines > 0) {
         for (int i = 0; i < numberOfLines; i++) {
-            if (!sFlag) {
                 if (!run++) std::cout << fileLine[i];
                 else std::cout << "\n" << fileLine[i];
-            }
-            if (fileLine[i].find(target) != std::string::npos and sFlag) {
-                if (!run++) std::cout << fileLine[i];
-                else std::cout << "\n" << fileLine[i];
-            }
         }
     }
     inputFile.close();
@@ -103,6 +110,7 @@ int setFlags() {
         if (flag == "-h") numberOfLines = std::stoi(std::string(globalArgv[i]).substr(2)), hFlag = 1;
         else if (flag == "-t") contextDown = std::stoi(std::string(globalArgv[i]).substr(2)), tFlag = 1;
         else if (flag == "-s") target = std::string(globalArgv[i]).substr(2), sFlag = 1;
+        else if (flag == "-i") iFlag = 1;
         else fileName = globalArgv[i];
     }
     return 0;
